@@ -2,7 +2,6 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 public class Calculator{
@@ -14,7 +13,6 @@ public void Inserir(double d){  //Alimentação via Digitação
 }
 
 public void LerArquivo( ){
-    
     
     
 }
@@ -29,23 +27,35 @@ public void RandomInteiro(double fim){
 }
 
 public void RandomDecimal(double inicio, double fim){
+    Random gerador = new Random();
     
-    
-    
+    System.out.println(gerador.nextDouble());
+
 }
 
 //FIM DA ALIMENTAÇÃO
 
 
-public int Size(){   // Valor de N
+public double Size(){   // Valor de N
     return armazen.size();
 }
 
 public void OrdenarLista(){     // Ordenar Lista
-    int i;
+
     Collections.sort(armazen);
+
+}
+
+public void Exibir(){
     for(double dados:armazen){
         System.out.println(dados);
+    } 
+}
+
+public void ExibirInteiro(){
+    DecimalFormat df = new DecimalFormat("0");
+    for(double dados:armazen){
+        System.out.println(df.format(dados));
     }
 }
 
@@ -62,17 +72,36 @@ public double Média(){      // Fazer a Média
     return media;
 }
 
-public void Exibir(){
-    for(double dados:armazen){
-        System.out.println(dados);
-    } 
+public double Mediana(){    // Fazer a Mediana
+    Collections.sort(armazen);
+    double mediana = 0;
+    if(armazen.size()%2==0){
+        int posicao1 = (armazen.size()/2)-1;
+        int posicao2 = (armazen.size()/2);
+        mediana = armazen.get(posicao1)/armazen.get(posicao2);
+    }
+    if(armazen.size()%2!=0){
+        int posicao = (int) (armazen.size()/2);
+        mediana = armazen.get(posicao);
+    }
+    return mediana;    
 }
 
-public void ExibirInteiro(){
-    DecimalFormat df = new DecimalFormat("0");
-    for(double dados:armazen){
-        System.out.println(df.format(dados));
+public double moda(){
+    Collections.sort(armazen);
+    ArrayList<Double> contagem = new ArrayList();
+    int i,j;
+    for (i = 0 ; i <= armazen.size() ; i++){
+        
+        vet[armazen.get(i)] = 0;
     }
+    
+    for (i = 0 ; i <= armazen.size() ; i++){
+        if()
+        
+    }
+    
+    
 }
- 
+
 }

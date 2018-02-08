@@ -3,9 +3,14 @@ public class Main {
         
         Calculator master = new Calculator();
 
-        master.RandomInteiro(25);
+        master.RandomInteiro(4);
+        master.OrdenarLista();
+
         
-        master.ExibirInteiro();
-   
+        System.out.println("----------");
+        
+        System.out.println("mediana");master.Mediana();
+        master.Size();
+        
     }
 }
