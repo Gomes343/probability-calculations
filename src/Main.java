@@ -1,16 +1,20 @@
+
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[]args){
+    public static void main(String[]args) throws IOException{
         
         Calculator master = new Calculator();
-
-        master.RandomInteiro(4);
-        master.OrdenarLista();
-
+      
+        master.LerArquivo();
         
-        System.out.println("----------");
+        master.Exibir();
         
-        System.out.println("mediana");master.Mediana();
-        master.Size();
+        Double x = master.Variancia();
+        System.out.println("Variancia é : "+ master.Variancia());
+        System.out.println("Desvio é: "+ master.DesvioPadrao(x));
+        
         
     }
 }
