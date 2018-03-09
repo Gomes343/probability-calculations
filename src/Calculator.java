@@ -132,30 +132,29 @@ public double Mediana(){    // Fazer a Mediana
     }
     return mediana;    
 }
+	
+public void moda() {
 
-
-public double Moda(){
-    Collections.sort(lista);
-    ArrayList<Double> copia = new ArrayList();
-    double vezes = 0,comparaV = 0,moda = 0;
-    
-    for(int i = 0 ; i < lista.size() ; i++){
-        copia.add(lista.get(i));
+        // Se não souber qual é o valor máximo ou tiver números
+        // muito dispersos ou negativos, use um Map<Integer, Integer>
+        int d = lista.size();
+        Double count[] = new Double[d];
+        double maior = 0.0;
+        
+        for (int num = 0 ; num < lista.size() ; num ++) {
+            count[num]++;
+            
+            if (maior < count[num]){
+                maior = count[num];
+        }
+            
+        //for (int i = 0; i < count.length; i++){
+         //   if (count[i] == maior)
+          //      System.out.println(i);
+        //}
+        
     }
-    
-    for(int i = 0 ; i < lista.size() ; i++){
-        for (int j = 0 ; j < lista.size() ; i++){
-            if(lista.get(i) == copia.get(j)){
-                vezes = vezes +1;
-            }
-        }    
-        if (vezes > comparaV) {     
-            moda = lista.get(i);
-            comparaV = vezes;     
-        }        
-    }
-    return moda;
-}    
+}
     
 public double Variancia(){
     double variancia = 0,v1 = 0,media = 0,somatorio = 0;

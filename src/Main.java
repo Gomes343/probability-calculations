@@ -7,14 +7,16 @@ public class Main {
         
         Calculator master = new Calculator();
       
-        master.LerArquivo();
+        //tira o lista.size!!!;
         
-        master.Exibir();
-        
-        Double x = master.Variancia();
-        System.out.println("Variancia é : "+ master.Variancia());
-        System.out.println("Desvio é: "+ master.DesvioPadrao(x));
-        
+        master.lista.add(1.);
+        master.lista.add(1.);
+        master.lista.add(1.);
+        master.lista.add(3.);
+        master.lista.add(3.);
+        master.lista.add(3.);
+
+        master.moda();
         
     }
 }
