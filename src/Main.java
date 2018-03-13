@@ -9,12 +9,12 @@ public class Main {
       
         //tira o lista.size!!!;
         
-        master.lista.add(1.);
-        master.lista.add(1.);
-        master.lista.add(1.);
-        master.lista.add(3.);
-        master.lista.add(3.);
-        master.lista.add(3.);
+        master.lista.add(5.);
+        master.lista.add(7.);
+        master.lista.add(10.);
+        master.lista.add(5.);
+        master.lista.add(7.);
+        
 
         master.moda();
         

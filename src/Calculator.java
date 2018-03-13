@@ -132,30 +132,54 @@ public double Mediana(){    // Fazer a Mediana
     }
     return mediana;    
 }
-	
+
+
+
+
+
+
+
+
+
 public void moda() {
 
-        // Se não souber qual é o valor máximo ou tiver números
-        // muito dispersos ou negativos, use um Map<Integer, Integer>
-        int d = lista.size();
-        Double count[] = new Double[d];
-        double maior = 0.0;
-        
-        for (int num = 0 ; num < lista.size() ; num ++) {
-            count[num]++;
-            
-            if (maior < count[num]){
-                maior = count[num];
+    double mtz[][] = new double[lista.size()][lista.size()];
+    
+    int k = 0;
+
+    
+    for(int i = 0 ; i < lista.size() ; i++){
+        mtz[0][i] = lista.get(i);
+        k++;
+        for(int j = 0 ; j < k ; j++){
+            System.out.println(lista.get(i)+" == "+mtz[0][j]);
+            if(lista.get(i) == mtz[0][j]){
+                mtz[1][i]++;
+            }
         }
-            
-        //for (int i = 0; i < count.length; i++){
-         //   if (count[i] == maior)
-          //      System.out.println(i);
-        //}
+    }
+   
+    int maior = 0;
+    for(int i = 0 ; i < lista.size()-1 ; i++){
+        if(mtz[1][i] > mtz[1][i+1]){
+            maior = (int) mtz[1][i];
+        }
+            maior = (int) mtz[1][i+1];
+    }
+    for(int i = 0 ; i < lista.size() ; i++){
         
     }
-}
     
+    
+    
+}
+ 
+
+
+
+
+
+
 public double Variancia(){
     double variancia = 0,v1 = 0,media = 0,somatorio = 0;
     
@@ -194,6 +218,5 @@ public double DesvioPadrao(double variancia){
 
     return Desvio;
 }
-
 
 }
