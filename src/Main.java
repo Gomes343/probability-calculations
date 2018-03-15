@@ -9,14 +9,16 @@ public class Main {
       
         //tira o lista.size!!!;
         
+        master.lista.add(2.);
+        master.lista.add(4.);
+        master.lista.add(3.);
         master.lista.add(5.);
-        master.lista.add(7.);
-        master.lista.add(10.);
-        master.lista.add(5.);
-        master.lista.add(7.);
+        master.lista.add(6.);
         
-
+        
+        System.out.println("---");
         master.moda();
+        
         
     }
 }

@@ -144,7 +144,7 @@ public double Mediana(){    // Fazer a Mediana
 public void moda() {
 
     double mtz[][] = new double[lista.size()][lista.size()];
-    
+    ArrayList<Double> moda = new ArrayList();
     int k = 0;
 
     
@@ -152,7 +152,6 @@ public void moda() {
         mtz[0][i] = lista.get(i);
         k++;
         for(int j = 0 ; j < k ; j++){
-            System.out.println(lista.get(i)+" == "+mtz[0][j]);
             if(lista.get(i) == mtz[0][j]){
                 mtz[1][i]++;
             }
@@ -160,16 +159,31 @@ public void moda() {
     }
    
     int maior = 0;
+    
     for(int i = 0 ; i < lista.size()-1 ; i++){
         if(mtz[1][i] > mtz[1][i+1]){
             maior = (int) mtz[1][i];
-        }
-            maior = (int) mtz[1][i+1];
-    }
-    for(int i = 0 ; i < lista.size() ; i++){
-        
+        }else{
+            maior = (int) mtz[1][i+1];}
     }
     
+    System.out.println(maior);
+    for(int i = 0 ; i < lista.size() ; i++){
+        if(mtz[1][i] == maior){
+            moda.add(mtz[0][i]);
+
+        }
+    }
+
+    for(int i = 0 ; i < lista.size() ; i++){
+        System.out.println("primeira linha :"+mtz[0][i]);
+        System.out.println("segunda linha :"+mtz[1][i]);
+    }
+    System.out.println("   ///  ");
+    for(int i = 0 ; i < moda.size() ; i++){
+        System.out.println(moda.get(i));
+    }
+
     
     
 }
