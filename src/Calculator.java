@@ -166,26 +166,22 @@ public void moda() {
         }else{
             maior = (int) mtz[1][i+1];}
     }
-    
-    System.out.println(maior);
-    for(int i = 0 ; i < lista.size() ; i++){
-        if(mtz[1][i] == maior){
-            moda.add(mtz[0][i]);
 
-        }
-    }
-
-    for(int i = 0 ; i < lista.size() ; i++){
-        System.out.println("primeira linha :"+mtz[0][i]);
-        System.out.println("segunda linha :"+mtz[1][i]);
-    }
-    System.out.println("   ///  ");
-    for(int i = 0 ; i < moda.size() ; i++){
-        System.out.println(moda.get(i));
-    }
-
+    if(maior == 1){
+        System.out.println("Não tem Moda");
+    }else{
     
-    
+          for(int i = 0 ; i < lista.size() ; i++){
+                if(mtz[1][i] == maior){
+                    moda.add(mtz[0][i]);
+
+                }
+          }
+
+          for(int i = 0 ; i < moda.size() ; i++){
+                System.out.println(moda.get(i));
+          }
+         }
 }
  
 

@@ -13,11 +13,11 @@ public class Main {
         master.lista.add(4.);
         master.lista.add(3.);
         master.lista.add(5.);
-        master.lista.add(6.);
+        master.lista.add(5.);
         
         
         System.out.println("---");
-        master.moda();
+
         
         
     }
