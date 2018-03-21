@@ -41,6 +41,7 @@ public void LerArquivo( ) throws IOException{
         String linha = buffRead.readLine();
         double x;
         while (linha != null) {
+            linha = linha.replace(",",".");
             x = Double.parseDouble(linha);
             this.lista.add(x);
             linha = buffRead.readLine();
@@ -133,14 +134,6 @@ public double Mediana(){    // Fazer a Mediana
     return mediana;    
 }
 
-
-
-
-
-
-
-
-
 public void moda() {
 
     double mtz[][] = new double[lista.size()][lista.size()];
@@ -159,12 +152,13 @@ public void moda() {
     }
    
     int maior = 0;
-    
+    int ref = (int) mtz[1][0];
     for(int i = 0 ; i < lista.size()-1 ; i++){
-        if(mtz[1][i] > mtz[1][i+1]){
-            maior = (int) mtz[1][i];
+        if(ref > mtz[1][i+1]){
+            maior = (int) ref;
         }else{
-            maior = (int) mtz[1][i+1];}
+            ref = (int) mtz[1][i+1];
+            maior = ref;}
     }
 
     if(maior == 1){
@@ -183,12 +177,6 @@ public void moda() {
           }
          }
 }
- 
-
-
-
-
-
 
 public double Variancia(){
     double variancia = 0,v1 = 0,media = 0,somatorio = 0;
