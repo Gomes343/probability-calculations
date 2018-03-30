@@ -2,14 +2,22 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Frequencia_e_Classe {
-    int h,k,n;
-    double Limite_Inferior,Limite_Superior;
+    int h,k;
+    // k = número de classes, h = amplitude das classes
+    
+    double Limite_Inferior = 999999999,Limite_Superior = 0;
+    double Amplitude_Total;
+    double[] classe_esquerda = new double[100];
+    double[] classe_direita = new double[100];
+    double[] frequencia = new double[100];
+    
     ArrayList<Double> dados = new ArrayList();
     
     //FONTES
@@ -43,37 +51,79 @@ public class Frequencia_e_Classe {
             linha = buffRead.readLine();
         }
         buffRead.close();
-        n = dados.size();
     } 
     
     public void Definir_LimiteInferior(){
         for(int i = 0 ; i < dados.size() ;i ++){
-            for(int j = 0 ; j < i ; j++){
+            for(int j = 0 ; j < dados.size() ; j++){
                if(dados.get(i) < Limite_Inferior){
                    Limite_Inferior = dados.get(i);
                }               
             } 
-        }   
+        }
     }
     
     public void Definir_LimiteSuperior(){
-       
-    }
-   
-    public void Definir_NumeroDeClasses(){
-       
+        for(int i = 0 ; i < dados.size() ;i ++){
+            for(int j = 0 ; j < dados.size() ; j++){
+               if(dados.get(i) > Limite_Superior){
+                   Limite_Superior = dados.get(i);
+               }               
+            } 
+        }
     }
    
     public void Definir_AmplitudeTotal(){
-       
+       Amplitude_Total = Limite_Superior - Limite_Inferior;
     }
     
-    public void ExibirClasses(){
-       
+    public void Definir_NumeroDeClasses(){
+       k = (int)(1+(3.3 * Math.log10(dados.size())));
+    }
+
+    public void Definir_Amplitude_de_Classe(){
+        h = (int)Amplitude_Total / k;
+    }
+    
+
+    public void Definir_Classes(){
+        double cont1 = 0, cont2 = 0;
+        classe_esquerda[0] = Limite_Inferior;
+        classe_direita[0] = Limite_Inferior + h;
+        
+        for(int i = 1 ; i < k ; i ++){
+            classe_esquerda[i] = (classe_direita[0] + 1) + (h*cont1) + (cont2*1);
+            cont1++;
+            cont2++;
+        }
+
+            cont1 = 1;
+            cont2 = 1;
+        for(int i = 1 ; i < k ; i++){
+            classe_direita[i] = (classe_direita[0] + (h*cont1) + (cont2*1));
+            cont1++;
+            cont2++;
+        }
+
+        
     }
    
-   public void ExibirFrenquencias(){
+   public void Definir_Frenquencias(){
+       for(int i = 0; i < dados.size() ; i ++){
+           for(int j = 0; j<k ; j++){
+               if(dados.get(i)>=classe_esquerda[j]&&dados.get(i)<classe_direita[j]){
+                   frequencia[j]++;
+               }
+           }
+       }
+   }
+   
+   public void Exibir(){
        
+               System.out.println("CLASSES--------------FREQUENCIA");
+        for(int i = 0 ; i < k ; i++){
+            System.out.println("|"+classe_esquerda[i]+" |- "+classe_direita[i]+"      "+frequencia[i]+"|");
+        }
    }
    
     

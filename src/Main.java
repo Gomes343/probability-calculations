@@ -6,18 +6,34 @@ public class Main {
     public static void main(String[]args) throws IOException{
         
         Calculator master = new Calculator();
-      
+        Frequencia_e_Classe fc = new Frequencia_e_Classe();
         
-        master.lista.add(1.);
-        master.lista.add(33.);
-        master.lista.add(74.);
-        master.lista.add(153.);
-        master.lista.add(37.);
-        master.lista.add(52.);
-        master.lista.add(998.);
-        master.lista.add(2.);
-        master.lista.add(29.);
         
+        fc.LerArquivo();
+        
+        fc.Definir_LimiteInferior();
+        System.out.println("Limite inferior"+fc.Limite_Inferior);
+        fc.Definir_LimiteSuperior();
+        System.out.println("Limite Superior"+fc.Limite_Superior);
+        fc.Definir_AmplitudeTotal();
+        System.out.println("Amplitude total"+fc.Amplitude_Total);
+        fc.Definir_NumeroDeClasses();
+        System.out.println("numero de classes"+fc.k);
+        fc.Definir_Amplitude_de_Classe();
+        System.out.println("amplitude das classes"+fc.h);
+        
+        System.out.println("total de dados: "+fc.dados.size());
+        System.out.println("-----------------");
+        System.out.println("TESTE COM CENSO ALEMANHA SALÁRIO");
+        
+        fc.Definir_Classes();
+        fc.Definir_Frenquencias();
+        fc.Exibir();
+
+    }
+}
+
+        /* TESTADOR
         System.out.println("TESTE DE MÉDIA");
         System.out.println("Média é: "+master.Média());
         System.out.println(" ------------ ");
@@ -38,6 +54,4 @@ public class Main {
         System.out.println("TESTE DE DESVIO PADRÃO");
         System.out.println("Desvio Padrão é: "+master.DesvioPadrao(master.Variancia()));
         System.out.println(" ------------ ");
-        
-    }
-}
+        */
