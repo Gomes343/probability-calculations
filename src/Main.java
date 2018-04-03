@@ -7,22 +7,49 @@ public class Main {
         
         Calculator master = new Calculator();
         Frequencia_e_Classe fc = new Frequencia_e_Classe();
+       /* 
+        fc.LerArquivoString();
         
         
-        fc.LerArquivo();
+        for(int i = 0 ; i < fc.dadosString.size() ; i++){
+            System.out.println(fc.dadosString.get(i));
+        }
+        
+        fc.Definir_ClassesString();
+        
+        for(int i = 0 ; i < fc.dadosString.size() ; i++){
+            System.out.println(fc.frequencia[i]);
+        }
+        */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        fc.LerArquivoDouble();
         
         fc.Definir_LimiteInferior();
-        System.out.println("Limite inferior"+fc.Limite_Inferior);
+        System.out.println("Limite inferior: "+fc.Limite_Inferior);
         fc.Definir_LimiteSuperior();
-        System.out.println("Limite Superior"+fc.Limite_Superior);
+        System.out.println("Limite Superior: "+fc.Limite_Superior);
         fc.Definir_AmplitudeTotal();
-        System.out.println("Amplitude total"+fc.Amplitude_Total);
+        System.out.println("Amplitude total: "+fc.Amplitude_Total);
         fc.Definir_NumeroDeClasses();
-        System.out.println("numero de classes"+fc.k);
+        System.out.println("numero de classes: "+fc.k);
         fc.Definir_Amplitude_de_Classe();
-        System.out.println("amplitude das classes"+fc.h);
+        System.out.println("amplitude das classes: "+fc.h);
         
-        System.out.println("total de dados: "+fc.dados.size());
+        System.out.println("total de dados: "+fc.dadosDouble.size());
         System.out.println("-----------------");
         System.out.println("TESTE COM CENSO ALEMANHA SALÁRIO");
         
