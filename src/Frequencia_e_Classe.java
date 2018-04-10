@@ -21,6 +21,7 @@ public class Frequencia_e_Classe {
     ArrayList<Double> dadosDouble = new ArrayList();
     ArrayList<Integer> dadosInt = new ArrayList();
     ArrayList<String> dadosString = new ArrayList();
+    ArrayList<String> classes = new ArrayList();
     
     boolean inteiro = true;
     
@@ -30,7 +31,6 @@ public class Frequencia_e_Classe {
     
   // LEITURA    
     public void LerArquivoDouble() throws IOException{
-  // LEITURA
 
         // Escolhendo o arquivo que será lido
         String arqLeitura = "\\alturas.txt";
@@ -86,7 +86,37 @@ public class Frequencia_e_Classe {
         }
         buffRead.close();
     } 
+       
+    public void LerArquivoString() throws IOException{
+
+
+        // Escolhendo o arquivo que será lido
+        String arqLeitura = "\\alturas.txt";
+       
+        //filtro
+        FileFilter filter = new FileNameExtensionFilter("Só TXT ou DOC carai...","txt","doc");
+        JFileChooser chooser = new JFileChooser();
+        chooser.addChoosableFileFilter(filter);
+        
+        int returnVal = chooser.showOpenDialog(chooser);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            arqLeitura = chooser.getSelectedFile().getAbsolutePath();
+        }
+        
+        BufferedReader buffRead = new BufferedReader(new FileReader(arqLeitura));
+        String linha = buffRead.readLine();
+        while (linha != null) {
+            this.dadosString.add(linha);
+            linha = buffRead.readLine();
+        }
+        buffRead.close();
+    }
+  // FIM LEITURA
     
+    
+    
+    
+  // DEFINIÇÃO VALORES INT E DOUBLE  
     public void Definir_LimiteInferior(){
         if(inteiro == false){
         for(int i = 0 ; i < dadosDouble.size() ;i ++){
@@ -143,7 +173,6 @@ public class Frequencia_e_Classe {
         h = (int)Amplitude_Total / k;
     }
     
-
     public void Definir_Classes(){
         double cont1 = 0, cont2 = 0;
         classe_esquerda[0] = Limite_Inferior;
@@ -181,7 +210,7 @@ public class Frequencia_e_Classe {
         
     }
    
-   public void Definir_Frenquencias(){
+    public void Definir_Frenquencias(){
        if(inteiro == false){
        for(int i = 0; i < dadosDouble.size() ; i ++){
            for(int j = 0; j<k ; j++){
@@ -200,46 +229,12 @@ public class Frequencia_e_Classe {
        }
        }
    }
-   
-   public void Exibir(){
-       
-               System.out.println("CLASSES--------------FREQUENCIA");
-        for(int i = 0 ; i < k ; i++){
-            System.out.println("|"+classe_esquerda[i]+" |- "+classe_direita[i]+"      "+frequencia[i]+"|");
-        }
-   }
-   
-   
-   
-   
-   
-    ArrayList<String> classes = new ArrayList();
+  // FIM DEFINIÇÃO VALORES INT E DOUBLE
     
-    public void LerArquivoString() throws IOException{
-
-
-        // Escolhendo o arquivo que será lido
-        String arqLeitura = "\\alturas.txt";
-       
-        //filtro
-        FileFilter filter = new FileNameExtensionFilter("Só TXT ou DOC carai...","txt","doc");
-        JFileChooser chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(filter);
-        
-        int returnVal = chooser.showOpenDialog(chooser);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            arqLeitura = chooser.getSelectedFile().getAbsolutePath();
-        }
-        
-        BufferedReader buffRead = new BufferedReader(new FileReader(arqLeitura));
-        String linha = buffRead.readLine();
-        while (linha != null) {
-            this.dadosString.add(linha);
-            linha = buffRead.readLine();
-        }
-        buffRead.close();
-    }
     
+    
+
+  // DEFINIÇÃO CLASSES E FREQUENCIA DO STRING
     public void Definir_ClassesString(){
         int cont = 0;
         boolean finalizador = false;
@@ -264,4 +259,29 @@ public class Frequencia_e_Classe {
         }
     
     }
+  // FIM DEINIFÇÃO CLASSES E FREQUENCIA DO STRING
+    
+    
+    
+    
+    
+  // EXIBIDORES
+    public void ExibirQuantitativos(){
+       
+               System.out.println("CLASSES--------------FREQUENCIA");
+        for(int i = 0 ; i < k ; i++){
+            System.out.println("|"+classe_esquerda[i]+" |- "+classe_direita[i]+"      "+frequencia[i]+"|");
+        }
+   }
+
+    public void ExibirQualitativos(){
+        System.out.println("CLASSES----------FREQUENCIA");
+        for(int i = 0; i < classes.size() ; i++){
+            System.out.println("|"+classes.get(i)+"   |-       "+frequencia[i]+"|");
+            
+        }
+    }
+  // FIM EXIBIDORES
+    
+    
 }

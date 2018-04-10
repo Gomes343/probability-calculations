@@ -1,10 +1,16 @@
 medio
 medio
 medio
+medio
 fundamental
-superior
+medio
+medio
 doutorado
 mestrado
 fundamental
+fundamental
 superior
+fundamental
+fundamental
+mestrado
 superior

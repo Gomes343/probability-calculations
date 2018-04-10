@@ -7,35 +7,19 @@ public class Main {
         
         Calculator master = new Calculator();
         Frequencia_e_Classe fc = new Frequencia_e_Classe();
-       /* 
+        
         fc.LerArquivoString();
-        
-        
+
         for(int i = 0 ; i < fc.dadosString.size() ; i++){
             System.out.println(fc.dadosString.get(i));
         }
         
         fc.Definir_ClassesString();
         
-        for(int i = 0 ; i < fc.dadosString.size() ; i++){
-            System.out.println(fc.frequencia[i]);
-        }
-        */
+        fc.ExibirQualitativos();
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        /*
         fc.LerArquivoDouble();
         
         fc.Definir_LimiteInferior();
@@ -56,7 +40,7 @@ public class Main {
         fc.Definir_Classes();
         fc.Definir_Frenquencias();
         fc.Exibir();
-
+*/
     }
 }
 
