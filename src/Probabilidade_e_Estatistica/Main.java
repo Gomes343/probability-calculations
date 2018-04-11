@@ -1,3 +1,5 @@
+package Probabilidade_e_Estatistica;
+
 
 import java.io.IOException;
 import java.util.Scanner;

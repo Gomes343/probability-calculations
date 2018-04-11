@@ -1,3 +1,5 @@
+package Probabilidade_e_Estatistica;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -59,11 +61,12 @@ public void RandomInteiro(double fim){
     }
 }
 
-public void RandomDecimal(double inicio, double fim){
+public void RandomDecimal(double fim){
     Random gerador = new Random();
     
-    System.out.println(gerador.nextDouble());
-
+    for(int i = 0; i <= fim ; i++){
+        lista.add(gerador.nextDouble()*100);
+    }
 }
 
 public void AdicionarVetor(double v[]){

@@ -1,3 +1,5 @@
+package Probabilidade_e_Estatistica;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
