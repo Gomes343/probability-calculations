@@ -9,6 +9,18 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class Frequencia_e_Classe {
     int h,k;
@@ -113,11 +125,19 @@ public class Frequencia_e_Classe {
         }
         buffRead.close();
     }
-  // FIM LEITURA
-    
-    
-    
-    
+  
+    public void LerArquivo(String x) throws FileNotFoundException, IOException{
+
+        BufferedReader buffRead = new BufferedReader(new FileReader("\\"+x+".txt"));
+        String linha = buffRead.readLine();
+        while (linha != null) {
+            System.out.println(linha);
+            linha = buffRead.readLine();
+        }
+        buffRead.close();
+    }
+// FIM LEITURA
+ 
   // DEFINIÇÃO VALORES INT E DOUBLE  
     public void Definir_LimiteInferior(){
         if(inteiro == false){
@@ -231,9 +251,17 @@ public class Frequencia_e_Classe {
        }
        }
    }
+    
+    public void GerarValoresQuantitativos(){
+        Definir_LimiteInferior();
+        Definir_LimiteSuperior();
+        Definir_AmplitudeTotal();
+        Definir_NumeroDeClasses();
+        Definir_Amplitude_de_Classe();
+        Definir_Classes();
+        Definir_Frenquencias();
+    }
   // FIM DEFINIÇÃO VALORES INT E DOUBLE
-    
-    
     
 
   // DEFINIÇÃO CLASSES E FREQUENCIA DO STRING
@@ -263,14 +291,11 @@ public class Frequencia_e_Classe {
     }
   // FIM DEINIFÇÃO CLASSES E FREQUENCIA DO STRING
     
-    
-    
-    
-    
+
   // EXIBIDORES
     public void ExibirQuantitativos(){
        
-               System.out.println("CLASSES--------------FREQUENCIA");
+   System.out.println("CLASSES--------------FREQUENCIA");
         for(int i = 0 ; i < k ; i++){
             System.out.println("|"+classe_esquerda[i]+" |- "+classe_direita[i]+"      "+frequencia[i]+"|");
         }
@@ -286,4 +311,71 @@ public class Frequencia_e_Classe {
   // FIM EXIBIDORES
     
     
+    
+    
+  // EXIBIR GRAFICOS
+    public void GraficoQuantitativo(){
+            
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        
+        for(int i = 0 ; i < k ; i++){
+            String x = classe_esquerda[i]+ " |- "+classe_direita[i];
+            String y = String.valueOf(i);
+            dataset.addValue(frequencia[i], "Frequencia", y);
+            System.out.println("Classe de Nº "+i+" = "+ x);
+            
+        }
+
+        JFreeChart graficoLinhas = ChartFactory.createLineChart("Arquivo Quantitativo", "Arquivo Inserido para Analise", "Frequencia", dataset, PlotOrientation.VERTICAL, true, true, false);
+        
+        JFrame frame1 = new JFrame("Janela do Gráfico de Linhas");
+        frame1.add(new ChartPanel(graficoLinhas));
+        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame1.pack();
+        frame1.setLocation(0, 10);
+        frame1.setVisible(true);
+        
+        
+        
+        JFreeChart graficoBarras = ChartFactory.createBarChart("Arquivo Quantitativo", "Arquivo Inserido para Analise", "Frequencia", dataset, PlotOrientation.VERTICAL, true, true, false);
+        
+        JFrame frame2 = new JFrame("Janela do Gráfico de Barras");
+        frame2.add(new ChartPanel(graficoBarras));
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.pack();
+        frame2.setLocation(700, 10);
+        frame2.setVisible(true);  
+        
+    }
+    
+    public void GraficoQualitativo(){
+            
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        
+        for(int i = 0 ; i < classes.size() ; i++){
+            dataset.addValue(frequencia[i], "Frequencia", classes.get(i));
+        }
+
+        JFreeChart graficoLinhas = ChartFactory.createLineChart("Arquivo Qualitativo", "Arquivo Inserido para Analise", "Frequencia", dataset, PlotOrientation.VERTICAL, true, true, false);
+        
+        JFrame frame1 = new JFrame("Janela do Gráfico de Linhas");
+        frame1.add(new ChartPanel(graficoLinhas));
+        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame1.pack();
+        frame1.setLocation(0, 10);
+        frame1.setVisible(true);
+        
+        
+        
+        JFreeChart graficoBarras = ChartFactory.createBarChart("Arquivo Qualitativo", "Arquivo Inserido para Analise", "Frequencia", dataset, PlotOrientation.VERTICAL, true, true, false);
+        
+        JFrame frame2 = new JFrame("Janela do Gráfico de Barras");
+        frame2.add(new ChartPanel(graficoBarras));
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.pack();
+        frame2.setLocation(700, 10);
+        frame2.setVisible(true);  
+        
+    }
+  // FIM GRAFICOS
 }

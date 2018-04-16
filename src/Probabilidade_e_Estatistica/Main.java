@@ -9,7 +9,43 @@ public class Main {
         
         Calculator master = new Calculator();
         Frequencia_e_Classe fc = new Frequencia_e_Classe();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("LEMBRETE: \n"
+                + "O sistema funciona apenas por leitura de arquivo \n"
+                + "existe um arquivo exemplo para cada tipo na pasta do projeto\n"
+                + "Separados em Double, Int e String.");
         
+        System.out.println("======================================");
+        System.out.println("Qual tipo de arquivo deseja analisar?\n"
+                + "Double, int, String \n");
+        
+        String x = sc.nextLine();
+        switch(x){
+            case "Double":
+                fc.LerArquivoDouble();
+                fc.GerarValoresQuantitativos();
+                fc.ExibirQuantitativos();
+                fc.GraficoQuantitativo();
+                break;
+            case "int":
+                fc.LerArquivoInt();
+                fc.GerarValoresQuantitativos();
+                fc.ExibirQuantitativos();
+                fc.GraficoQuantitativo();
+                break;
+            case "String":
+                fc.LerArquivoString();
+                fc.Definir_ClassesString();
+                fc.ExibirQualitativos();
+                fc.GraficoQualitativo();
+                break;
+        }
+        
+        
+        
+        
+        
+        /*
         fc.LerArquivoString();
 
         for(int i = 0 ; i < fc.dadosString.size() ; i++){
@@ -20,9 +56,13 @@ public class Main {
         
         fc.ExibirQualitativos();
         
+        System.out.println("=");
+        
+        fc.GraficoString();
+        */
         
         /*
-        fc.LerArquivoDouble();
+        fc.LerArquivoInt();
         
         fc.Definir_LimiteInferior();
         System.out.println("Limite inferior: "+fc.Limite_Inferior);
@@ -37,12 +77,15 @@ public class Main {
         
         System.out.println("total de dados: "+fc.dadosDouble.size());
         System.out.println("-----------------");
-        System.out.println("TESTE COM CENSO ALEMANHA SALÁRIO");
+        //System.out.println("TESTE COM CENSO ALEMANHA SALÁRIO");
         
         fc.Definir_Classes();
         fc.Definir_Frenquencias();
-        fc.Exibir();
-*/
+        
+        //'fc.ExibirQuantitativos();
+        
+        fc.GraficoQuantitativo();
+        */
     }
 }
 
