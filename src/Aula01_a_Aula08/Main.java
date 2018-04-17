@@ -1,4 +1,4 @@
-package Probabilidade_e_Estatistica;
+package Aula01_a_Aula08;
 
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class Main {
         String x = sc.nextLine();
         switch(x){
             case "Double":
-                fc.LerArquivoDouble();
+                fc.LerArquivoDouble("exemploDouble");
                 fc.GerarValoresQuantitativos();
                 fc.ExibirQuantitativos();
                 fc.GraficoQuantitativo();

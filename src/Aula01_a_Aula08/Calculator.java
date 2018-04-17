@@ -1,4 +1,4 @@
-package Probabilidade_e_Estatistica;
+package Aula01_a_Aula08;
 
 
 import java.io.BufferedReader;

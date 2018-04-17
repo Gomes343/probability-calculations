@@ -1,7 +1,8 @@
-package Probabilidade_e_Estatistica;
+package Aula01_a_Aula08;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.Math.sqrt;
@@ -126,18 +127,57 @@ public class Frequencia_e_Classe {
         buffRead.close();
     }
   
-    public void LerArquivo(String x) throws FileNotFoundException, IOException{
+    public void LerArquivoDouble(String x) throws IOException{
 
-        BufferedReader buffRead = new BufferedReader(new FileReader("\\"+x+".txt"));
+        // Escolhendo o arquivo que será lido
+        String currentDirectory = new File("").getAbsolutePath();
+        BufferedReader buffRead = new BufferedReader(new FileReader(currentDirectory+"\\" +x+".txt"));
+        String linha = buffRead.readLine();
+        double y;
+        while (linha != null) {
+            linha = linha.replace(",",".");
+            y = Double.parseDouble(linha);
+            this.dadosDouble.add(y);
+            linha = buffRead.readLine();
+        }
+        buffRead.close();
+        inteiro = false;
+    } 
+    
+    public void LerArquivoInt(String x) throws IOException{
+
+
+        // Escolhendo o arquivo que será lido
+        String currentDirectory = new File("").getAbsolutePath();
+        BufferedReader buffRead = new BufferedReader(new FileReader(currentDirectory+"\\" +x+".txt"));
+        String linha = buffRead.readLine();
+        Double z;
+        int y;
+        while (linha != null) {
+            z = Double.parseDouble(linha);
+            y = z.intValue();
+            this.dadosInt.add(y);
+            linha = buffRead.readLine();
+        }
+        buffRead.close();
+    } 
+       
+    public void LerArquivoString(String x) throws IOException{
+
+        // Escolhendo o arquivo que será lido
+        String currentDirectory = new File("").getAbsolutePath();
+        BufferedReader buffRead = new BufferedReader(new FileReader(currentDirectory+"\\" +x+".txt"));
         String linha = buffRead.readLine();
         while (linha != null) {
-            System.out.println(linha);
+            this.dadosString.add(linha);
             linha = buffRead.readLine();
         }
         buffRead.close();
     }
 // FIM LEITURA
  
+    
+    
   // DEFINIÇÃO VALORES INT E DOUBLE  
     public void Definir_LimiteInferior(){
         if(inteiro == false){
