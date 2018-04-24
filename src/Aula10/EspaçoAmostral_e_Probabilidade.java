@@ -25,7 +25,7 @@ public class EspaçoAmostral_e_Probabilidade {
             }
         }
         a = a.concat("}");
-        
+        x.clear();
         return a;
         
     }
